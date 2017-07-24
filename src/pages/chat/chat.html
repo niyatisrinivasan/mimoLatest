@@ -1,0 +1,50 @@
+<ion-header class="navbar">
+  <ion-navbar>
+    <ion-row id="menuRow">
+      <button id="menuBtn" menuToggle (click)="openMenu()">
+         <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-title>mimoBot</ion-title>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding id="ion-content">
+  <ion-card text-wrap *ngFor="let msg of messages">
+    <!--<ion-card-content *ngIf="msg.type === 'sent'" class="userMsg">
+      {{ msg.text }}
+    </ion-card-content>
+
+    <ion-card-content *ngIf="msg.type == 'received'" class="botMsg">
+      {{ msg.text }}
+    </ion-card-content>-->
+
+    <ion-card-content [ngClass]="{'userMsg': msg.isUserMsg, 'botMsg': !msg.isUserMsg }">
+      <!--<ion-avatar item-start>-->
+        <!--<img src="assets/discover.png">-->
+      <!--</ion-avatar>-->
+      <!-- if it's a user's msg, then the class is userMsg-->
+      {{ msg.text }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="openChat()">
+      <ion-icon name="chatbubbles"></ion-icon>
+   </button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer class="footer">
+  <ion-row id="userInputRow">
+    <ion-col id="userInput">
+      <ion-input type="text" [disabled]="isDisabled" [(ngModel)]="userMsg" name="userMsg" class="button button-clear" placeholder="Type here..."></ion-input>
+
+      <!--<ion-searchbar (ionInput)="getData($event)" autocorrect="off"></ion-searchbar>-->
+      <!--<ion-auto-complete></ion-auto-complete>-->
+    </ion-col>
+
+    <button ion-button id="sendBtn" [disabled]="isDisabled" (click)="sendMessage()">Send</button>
+  </ion-row>
+</ion-footer>

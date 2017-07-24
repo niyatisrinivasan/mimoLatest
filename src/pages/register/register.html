@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-icon></ion-icon>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content" padding>
+  <ion-row class="logo-row">
+
+    <img id="profilepic" src="assets/mimotreepic.jpg" width="60" height="auto" margin-bottom="20">
+
+  </ion-row>
+  <div class="login-box">
+
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Full Name" name="UserName" [(ngModel)]="credentials.UserName" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="email" placeholder="Email" name="email" [(ngModel)]="credentials.email" required></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+              <ion-label>Gender</ion-label>
+              <ion-select name="Gender" [(ngModel)]="credentials.Gender" required>
+                <ion-option value="Female">Female</ion-option>
+                <ion-option value="Male">Male</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Address" name="Address" [(ngModel)]="credentials.Address" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="PostalCode" name="PostalCode" [(ngModel)]="credentials.PostalCode" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Countries</ion-label>
+              <ion-select [(ngModel)]="credentials.CountryID" multiple>
+                <ion-option *ngFor="let country of countryList" name = "CountryID" [value]="name.CountryID" [checked]="false">{{country.CountryName}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Date of Birth</ion-label>
+              <ion-datetime displayFormat="MMM DD, YYYY HH:mm" name="DateOfBirth" [(ngModel)]="credentials.DateOfBirth"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="credentials.password" required></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,52 @@
+page-register {
+.login-content {
+    background: #FFFFFF;
+ 
+    .login-box {
+      background: #ffffff;
+      
+      margin-top: 10px;
+    }
+ 
+    ion-row {
+       align-items: center;
+       text-align: center;
+     }
+
+     ion-list{
+       padding-top: 10px;
+     }
+ 
+     ion-item {
+         border-radius: 10px !important;
+         background-color: transparent;
+         padding-left: 30px !important;
+         font-size: 0.9em;
+         margin-bottom: 10px;
+         border: 1px solid black;
+         border-bottom: 0px !important;
+         box-shadow: none !important;
+     }
+    .profilepic{
+    display: block;
+    margin: 0 auto;
+    height: 3cm;
+    width: 3cm;
+    }
+     .signup-col {
+       margin: 0px 16px 0px 16px;
+       padding-bottom: 20px;
+     }
+ 
+     .item-inner {
+       border-bottom-color: #ffffff !important;
+       box-shadow: none !important;
+     }
+ 
+     .submit-btn {
+       background: #51CFB1;
+       border-radius: 30px !important;
+       border: 1px solid #ffffff;
+     }
+  }
+}

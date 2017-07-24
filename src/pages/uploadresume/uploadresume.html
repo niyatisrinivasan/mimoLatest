@@ -1,0 +1,33 @@
+<ion-header class="navbar">
+  <ion-navbar>
+    <ion-row id="menuRow">
+      <button id="menuBtn" menuToggle (click)="openMenu()">
+         <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-title>mimoBot</ion-title>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col class="col-75" text-wrap *ngFor="let resume of resumes">
+
+      <ion-card>
+        <ion-card-content>
+          <img src="assets/menu.png" />
+          <ion-card-title> {{ resume.name }} </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-col>
+    <!--<div class="col col-75">.col.col-75 your content here in first column</div>-->
+    <!--<div class="col">.col your content here in second column</div>-->
+  </ion-row>
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="openChat()">
+      <ion-icon name="chatbubbles"></ion-icon>
+   </button>
+  </ion-fab>
+</ion-content>

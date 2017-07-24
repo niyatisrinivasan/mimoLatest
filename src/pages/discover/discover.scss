@@ -1,0 +1,49 @@
+$white: #ffffff;
+$turquoise: #58bcbc;
+// $darkerGrey: #202020;
+$darkGrey: #424242;
+
+// .navbar {
+//     ion-navbar {
+//         div {
+//             background-color: $white;
+//         }
+//     }
+    
+//     #menuRow {
+//         #menuBtn {
+//             width: 12%;
+//             padding: 0;
+//             margin: 2%;
+//             background-color: $white;
+//         }
+//     }
+// }
+
+#ion-content {
+    background-color: $turquoise;
+    overflow: hidden;
+
+     ion-card {
+        background-color: rgba(66, 66, 66, 0.9);
+        margin: 5% auto;
+        width: 100%;
+        border-radius: 4%;
+        box-shadow: 3px 3px 3px black;
+
+        h1 {
+        color: $turquoise;
+        font-size: 20px;
+        }
+
+        p {
+            color: $white;
+        }
+     }
+
+    ion-fab {
+        img {
+            width: 70%;
+        }
+    }
+}

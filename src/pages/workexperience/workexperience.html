@@ -1,0 +1,84 @@
+<ion-header class="navbar">
+  <ion-navbar>
+    <ion-row id="menuRow">
+      <button id="menuBtn" menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-title>mimoBot</ion-title>
+
+      <button id="addWorkExp" (click)="addWorkExperience()">
+         <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="ion-content">
+  <ion-list *ngIf="gotWorkExp">
+    <ion-card text-wrap *ngFor="let work of workExpList">
+      <ion-card-content>
+        <h1>{{work.CompanyName}}</h1>
+
+        <ion-row>
+          <ion-col col-1>
+          </ion-col>
+          <ion-col>
+            <p>{{work.Role}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-1>
+          </ion-col>
+          <ion-col>
+            <p>{{work.Description}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon name="calendar"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <p>Start Date: {{work.StartDate}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon name="calendar"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <p>End Date: {{work.EndDate}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-1>
+          </ion-col>
+          <ion-col>
+            <p>{{work.RecordStatus}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+
+      <ion-row>
+        <button ion-button icon-right full outline ion-button color="primary" (click)="updateWorkExperience(work.WorkExperienceID, work)">
+          <ion-col><p> Edit </p></ion-col>
+        </button>
+      </ion-row>
+      <ion-row>
+        <button ion-button icon-right full outline ion-button color="primary" (click)="removeWorkExp(work.WorkExperienceID)">
+          <ion-col><p>delete</p></ion-col>
+        </button>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="openChat()">
+      <ion-icon name="chatbubbles"></ion-icon>
+   </button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header class="navbar">
+  <ion-navbar>
+    <ion-row id="menuRow">
+      <button id="menuBtn" menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-title>mimoBot</ion-title>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="list-avatar-page">
+  <ion-list>
+
+    <ion-list-header>Today</ion-list-header>
+
+    <ion-item>
+      <h2>{{notificationData[0].Title}}</h2>
+      <p>{{notificationData[0].Description}}</p>
+      <!--<ion-note item-end>3:43 pm</ion-note>-->
+    </ion-item>
+    <ion-item>
+
+      <h2>{{notificationData[1].Title}}</h2>
+      <p>{{notificationData[1].Description}}</p>
+      <!--<ion-note item-end>3:43 pm</ion-note>-->
+    </ion-item>
+
+    <ion-item>
+      <h2>{{notificationData[2].Title}}</h2>
+      <p>{{notificationData[2].Description}}</p>
+      <!--<ion-note item-end>3:43 pm</ion-note>-->
+    </ion-item>
+
+    <ion-item>
+      <h2>{{notificationData[3].Title}}</h2>
+      <p>{{notificationData[3].Description}}</p>
+      <!--<ion-note item-end>3:43 pm</ion-note>-->
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-fab right bottom>
+  <button ion-fab color="light" (click)="openPopover($event)">
+     <img src="assets/circle icon.png"/>
+   </button>
+</ion-fab>

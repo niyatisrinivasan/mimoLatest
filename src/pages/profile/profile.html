@@ -1,0 +1,69 @@
+<ion-header class="navbar">
+  <ion-navbar>
+    <ion-row id="menuRow">
+      <button id="menuBtn" menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-title>mimoBot</ion-title>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="profile-content" padding>
+  <ion-card class="profile-box">
+    <ion-row class="editicon">
+      <button ion-button icon-right clear small ion-button color="dark" (click)=showPrompt(userData) class="buttton-right"> 
+     <ion-icon id="edit"name="create"></ion-icon>
+      </button>
+    </ion-row>
+
+
+    <p id="name">{{userData.UserName}}
+      <img src id="profilepic" src="assets/mimotreepic.jpg">
+    </p>
+    <p id="email">{{userData.Email}} </p>
+
+    <!-- ADDRESS -->
+    <ion-row>
+      <ion-item class="home">
+        <ion-col>
+          <ion-icon name="home"></ion-icon>
+        </ion-col>
+        <ion-col col-3>
+          <p id="address">{{userData.Address}} </p>
+        </ion-col>
+      </ion-item>
+    </ion-row>
+
+    <!-- GENDER -->
+    <ion-row>
+      <ion-item class="gender">
+        <ion-col>
+          <ion-icon name="person"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <p id="gender">{{userData.Gender}}</p>
+        </ion-col>
+      </ion-item>
+    </ion-row>
+
+    <!-- COUNTRY -->
+    <!-- <ion-row>
+      <ion-item class="country">
+        <ion-col>
+          <ion-icon name="flag"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <p id="country">{{userData.Countries | extractCountryName}} </p>
+        </ion-col>
+      </ion-item>
+    </ion-row> -->
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="openChat()">
+      <ion-icon name="chatbubbles"></ion-icon>
+   </button>
+  </ion-fab>
+</ion-content>

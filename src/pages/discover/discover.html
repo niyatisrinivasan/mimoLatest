@@ -1,0 +1,76 @@
+<ion-header class="navbar">
+  <ion-navbar>
+    <ion-row id="menuRow">
+      <button id="menuBtn" menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-title>mimoBot</ion-title>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content id="ion-content" padding class="ion-content">
+  <ion-list *ngIf="gotJobs">
+    <ion-card text-wrap *ngFor="let job of jobList">
+      <ion-card-content (click)="viewOneJob(job)">
+        <h1>{{job.JobTitle}}</h1>
+
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon name="pin"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <p>{{job.JobAddress}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon name="logo-usd"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <p>{{job.Salary | extractSalaryInfo}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <p> {{job.JobDescription | limitCharacters }} </p>
+        </ion-row>
+        <!--<div *ngFor="let jobFunction of job.JobFunctions">
+        {{jobFunction.JobFunctionName}}
+      </div>-->
+      </ion-card-content>
+
+      <ion-row>
+        <button *ngIf="job.isBookmarked == false" ion-button icon-left clear small color="dark" (click)="addBookmark(job)">
+          <ion-col col-2><ion-icon name="bookmark"></ion-icon></ion-col>
+          <ion-col><p>Bookmark</p></ion-col>
+        </button>
+
+        <!--<div elseBlock>-->
+        <button *ngIf= "job.isBookmarked == true" ion-button icon-left clear small color="dark" (click)="removeBookmark(job)">
+          <ion-col col-2><ion-icon name="bookmark"></ion-icon></ion-col>
+          <ion-col><p>Remove Bookmark</p></ion-col>
+        </button>
+        <!--</div>-->
+
+        <!--<button ion-button icon-left clear small color="dark" (click)="addToBookmarks(job)">
+          <ion-col col-2><ion-icon name="bookmark"></ion-icon> </ion-col>
+          <ion-col><p [textContent]="job.isBookmarked? 'Remove Bookmark': 'Bookmark'"></p></ion-col>
+        </button>-->
+
+        <button ion-button icon-right clear small ion-button color="dark" (click)="applyForJob()">
+          <ion-col col-2><ion-icon name="clipboard"></ion-icon></ion-col>
+          <ion-col><p> Apply </p></ion-col>
+        </button>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="openChat()">
+      <ion-icon name="chatbubbles"></ion-icon>
+   </button>
+  </ion-fab>
+</ion-content>

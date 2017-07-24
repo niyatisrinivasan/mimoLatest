@@ -1,0 +1,151 @@
+$white: #ffffff;
+$turquoise: #58bcbc;
+// $darkerGrey: #202020;
+$darkGrey: #424242;
+
+// .navbar {
+    // .ion-bar {
+    //     div {
+    //         background-color: $turquoise;
+    //     }
+    // }
+    
+    // #menuRow {
+    //     #menuBtn {
+    //         width: 12%;
+    //         padding: 0;
+    //         margin: 2%;
+    //     }
+    // }
+// }
+
+#ion-content {
+    background-color: $turquoise;
+    overflow: hidden;
+
+    ion-card {
+        background-color: $darkGrey;
+        margin: 5% auto;
+        width: 100%;
+        color: $white;
+        border-radius: 4%;
+        box-shadow: 3px 3px 3px black;
+
+        .userMsg {
+            border-right: 5px $white solid;
+            text-align:right;
+        }
+
+        .botMsg {
+            border-left: 5px $white solid;
+            text-align:left;
+        }
+    }
+
+    ion-fab {
+        img {
+            width: 70%;
+        }
+    }
+}
+
+.footer {
+    background: rgba(255, 255, 255, 0.5);
+    height: 12%;
+    padding-top: 5%;
+
+    #userInputRow {
+        padding: 1% 1%;
+        position: fixed;
+        bottom: 1%;
+        left: 0;
+        right: 0;
+        width: 100%;
+
+        #userInput {
+            ion-input {
+                background: $white;
+                padding: 0 5%;
+            }
+        }
+    }
+}
+
+// $white: #ffffff;
+// $turquoise: #58bcbc;
+
+// .navbar {
+//     ion-navbar {
+//         div {
+//             background-color: $white;
+//         }
+//     }
+    
+//     #menuRow {
+//         #menuBtn {
+//             width: 12%;
+//             padding: 0;
+//             margin: 2%;
+//             background-color: $white;
+//         }
+//     }
+// }
+
+// .ion-content {
+//     background-color: $turquoise;
+//     overflow: hidden;
+
+//     ion-card {
+//         margin: 5% auto;
+//         width: 100%;
+//         .userMsg {
+//             border-right: 5px black solid;
+//             text-align:right;
+//         }
+
+//         .botMsg {
+//             border-left: 5px black solid;
+//             text-align:left;
+//         }
+//     }
+
+//     ion-fab {
+//         img {
+//             width: 70%;
+//         }
+//     }
+// }
+
+// .footer {
+//     height: 12%;
+//     padding-top: 5%;
+
+//     #userInputRow {
+//         padding: 1% 1%;
+//         position: fixed;
+//         bottom: 1%;
+//         left: 0;
+//         right: 0;
+//         width: 100%;
+
+//         #userInput {
+//             ion-input {
+//                 background: $white;
+//                 padding: 0 5%;
+//             }
+//         }
+//     }
+// }
+
+// #menu {
+//     background: $white;
+//     position: absolute;
+//     bottom: 15%;
+//     left: 75%;
+//     right: 0;
+
+//     img {
+//         width: 90%;
+//     }
+// }
+

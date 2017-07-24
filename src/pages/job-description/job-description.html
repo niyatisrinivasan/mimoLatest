@@ -1,0 +1,69 @@
+<ion-header class="navbar">
+  <ion-navbar>
+    <!--<ion-row id="menuRow">-->
+      <!--<button id="menuBtn" menuToggle (click)="openMenu()">
+         <ion-icon name="menu"></ion-icon>
+      </button>-->
+
+      <ion-title>mimoBot</ion-title>
+    <!--</ion-row>-->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="ion-content">
+  <ion-list>
+    <ion-card>
+      <ion-card-content>
+        <h1>{{job.JobTitle}}</h1>
+
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon name="pin"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <p>{{job.JobAddress}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon name="logo-usd"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <p>{{job.Salary | extractSalaryInfo}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-label> Description </ion-label>
+          <p> {{job.JobDescription }} </p>
+        </ion-row>
+
+        <ion-row>
+          <ion-label> Qualifications </ion-label>
+          <p [innerHTML]="jobQualification"></p>
+        </ion-row>
+      </ion-card-content>
+
+      <ion-row>
+        <button ion-button icon-left clear small color="dark">
+          <ion-col col-2><ion-icon name="bookmark"></ion-icon> </ion-col>
+          <ion-col><p> Bookmark </p></ion-col>
+        </button>
+
+        <button ion-button icon-right clear small ion-button color="dark">
+          <ion-col col-2><ion-icon name="clipboard"></ion-icon></ion-col>
+          <ion-col><p> Apply </p></ion-col>
+        </button>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="openChat()">
+      <ion-icon name="chatbubbles"></ion-icon>
+   </button>
+  </ion-fab>
+
+</ion-content>

@@ -1,0 +1,174 @@
+<ion-header class="navbar">
+  <ion-navbar>
+    <ion-row id="menuRow">
+      <button id="menuBtn" menuToggle (click)="openMenu()">
+         <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-title>mimoBot</ion-title>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content text-wrap padding class="ion-content">
+  <ion-list>
+    <ion-list-header>
+      <!--<h3 class="date"> {{application.DateApplied | formatDisplayDate}} </h3>-->
+      <h3> AHAHA</h3>
+    </ion-list-header>
+    <ion-item *ngFor="let application of applications" (click)="viewOneJob(application.Job)">
+      <!--<h3 class="date"> {{application.DateApplied | formatDate}} </h3><br>
+      <p class="jobTitle">Your application for {{application.Job.JobTitle}}</p>-->
+      <ion-row>
+        <p>{{application.Job.JobTitle}}</p>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-1>
+          <ion-icon name="pin"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <p>{{application.Job.JobAddress}}</p>
+        </ion-col>
+      </ion-row>
+
+      <!--<ion-row>
+        <ion-col col-1>
+          <ion-icon name="logo-usd"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <p>{{application.Job.Salary | extractSalaryInfo}}</p>
+        </ion-col>
+      </ion-row>-->
+
+      <!--<ion-row>
+        <p> {{application.Job.JobDescription | limitCharacters }} </p>
+      </ion-row>-->
+
+      <ion-row>
+        <!--<button ion-button icon-left clear small color="dark" (click)="addToBookmarks()">
+          <ion-col col-2><ion-icon name="bookmark"></ion-icon> </ion-col>
+          <ion-col><p> Bookmark </p></ion-col>
+        </button>
+
+      <button ion-button icon-right clear small ion-button color="dark" (click)="applyForJob()">
+          <ion-col col-2><ion-icon name="clipboard"></ion-icon></ion-col>
+          <ion-col><p> Apply </p></ion-col>
+        </button>-->
+        <h3> {{application.ApplicationStatus}}</h3>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="openChat()">
+      <ion-icon name="chatbubbles"></ion-icon>
+   </button>
+  </ion-fab>
+</ion-content>
+
+<!--<ion-list *ngIf="gotJobs">
+    <ion-card text-wrap *ngFor="let job of jobList" (click)="viewOneJob(job)">
+      <ion-card-content>
+        <h1>{{job.JobTitle}}</h1>
+
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon name="pin"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <p>{{job.JobAddress}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon name="logo-usd"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <p>{{job.Salary | extractSalaryInfo}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <p> {{job.JobDescription | limitCharacters }} </p>
+        </ion-row>
+        <div *ngFor="let jobFunction of job.JobFunctions">
+        {{jobFunction.JobFunctionName}}
+      </div>
+      </ion-card-content>
+
+      <ion-row>
+        <button ion-button icon-left clear small color="dark" (click)="addToBookmarks()">
+          <ion-col col-2><ion-icon name="bookmark"></ion-icon> </ion-col>
+          <ion-col><p> Bookmark </p></ion-col>
+        </button>
+
+        <button ion-button icon-right clear small ion-button color="dark" (click)="applyForJob()">
+          <ion-col col-2><ion-icon name="clipboard"></ion-icon></ion-col>
+          <ion-col><p> Apply </p></ion-col>
+        </button>
+      </ion-row>
+    </ion-card>
+  </ion-list>-->
+
+<!--<ion-header class="navbar">
+  <ion-navbar>-->
+<!--<ion-row id="menuRow">
+      <button id="menuBtn" menuToggle (click)="openMenu()">
+          <img src="assets/menu.png"/>
+        </button>
+
+      <ion-title>mimoBot</ion-title>
+    </ion-row>-->
+<!--</ion-navbar>
+</ion-header>-->
+
+<!--<ion-content id="list-avatar-page">
+  <ion-list>
+
+    <ion-list-header id="title">Attention (1)</ion-list-header>
+
+    <ion-item>
+
+      <h2>what is my name?</h2>
+      <p>Hang on while we get someone to attend to you</p>-->
+<!--<ion-note item-end>3:43 pm</ion-note>-->
+<!--</ion-item>
+
+    <ion-list-header id="title1">Negative Feedback</ion-list-header>
+    <ion-item>
+      <p>I found it uncomfortable as i had to stand throughout the entire show</p>-->
+<!--<p>I found it uncomfortable as i had to stand throughout the entire show</p>-->
+<!--<ion-note item-end>10:03 am</ion-note>-->
+<!--</ion-item>
+    <ion-item>
+      <p>I did not like the show</p>-->
+<!--<p>I found it uncomfortable as i had to stand throughout the entire show</p>-->
+<!--<ion-note item-end>10:03 am</ion-note>-->
+<!--</ion-item>
+    <ion-list-header id="title2">Positive Feedback</ion-list-header>
+    <ion-item>
+      <p>The event was great! I enjoyed myself thoroughly.\nWould definitely take part in more of such events</p>
+    </ion-item>
+    <ion-item>
+      <p>I am really pleased with how the event turned out</p>
+    </ion-item>
+    <ion-list-header id="title3">FAQ</ion-list-header>
+    <ion-item>
+      <h2>what day is the competition held?</h2>
+      <p>Hi! It is held on the 14th-15th of July</p>-->
+<!--<ion-note item-end>1:12 pm</ion-note>-->
+<!--</ion-item>
+    <ion-item>
+      <h2>What is the venue of the competition?</h2>
+      <p>Hi! The competition would be held at School of Economics (SOE), Level 2 Singapore Management University 90 Stamford
+        Road Singapore 178903</p>-->
+<!--<ion-note item-end>5:47 am</ion-note>-->
+<!--</ion-item>
+    <ion-item>
+      <h2>How long is the competition?</h2>
+      <p>Hi! It is a 24 hour competition from 1600 on Friday 14th July to 1600 on Saturday 15th July</p>-->
+<!--<ion-note item-end>5:47 am</ion-note>-->
+<!--</ion-item>
+  </ion-list>-->
