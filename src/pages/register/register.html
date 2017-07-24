@@ -45,8 +45,8 @@
 
             <ion-item>
               <ion-label>Countries</ion-label>
-              <ion-select [(ngModel)]="credentials.CountryID" multiple>
-                <ion-option *ngFor="let country of countryList" name = "CountryID" [value]="name.CountryID" [checked]="false">{{country.CountryName}}</ion-option>
+              <ion-select name="CountryID" [(ngModel)]="credentials.CountryID" multiple>
+                <ion-option *ngFor="let country of countryList"  [value]="name.CountryID" >{{country.CountryName}}</ion-option>
               </ion-select>
             </ion-item>
 

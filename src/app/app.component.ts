@@ -28,32 +28,32 @@ export class MyApp {
   constructor(public push: Push, public platform: Platform, public nativeStorage: NativeStorage, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp()
     this.receiveNotification()
-    // this.rootPage = MenuPage
+    this.rootPage = LoginPage
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
   }
 
   // initializeApp() {
   //   this.platform.ready().then(() => {
-  //     this.statusBar.styleDefault();
-  //     this.splashScreen.hide();
+  //     let env = this;
+
+  //     env.nativeStorage.getItem('localUserData') //check if userData exists
+  //       .then(function (data) {
+  //         env.rootPage = MenuPage
+  //         env.splashScreen.hide();
+  //       }, function (error) { //if userData does not exists
+  //         env.rootPage = LoginPage
+  //         env.splashScreen.hide();
+  //       });
+
+  //     env.statusBar.styleDefault();
   //   });
   // }
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-      let env = this;
-
-      env.nativeStorage.getItem('localUserData') //check if userData exists
-        .then(function (data) {
-          env.rootPage = MenuPage
-          env.splashScreen.hide();
-        }, function (error) { //if userData does not exists
-          env.rootPage = LoginPage
-          env.splashScreen.hide();
-        });
-
-      env.statusBar.styleDefault();
-    });
-  }
 
   receiveNotification() {
     let self = this

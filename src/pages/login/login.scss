@@ -13,9 +13,7 @@ page-login {
       margin: 0 auto;
     } 
     .login-box {
-      background: white;
-    //   border: 1px solid black;
-      
+      background: white;  
       margin-top: 20px;
     }
  
@@ -38,16 +36,18 @@ page-login {
        margin: 0px 16px 0px 16px;
        padding-bottom: 20px;
      }
- 
+     
+     
      .item-inner {
        border-bottom-color: #ffffff !important;
        box-shadow: none !important;
      }
  
      .submit-btn {
-       background: #58bcbc;
+       background: #4cba9d;
        border-radius: 30px !important;
        border: 1px solid #ffffff;
+       font: 1.3em;
      }
  
      .register-btn {
