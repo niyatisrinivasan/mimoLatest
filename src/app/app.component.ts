@@ -15,10 +15,11 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { ProfilePage } from '../pages/profile/profile';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { ChatPage } from '../pages/chat/chat';
+import {Keyboard} from '@ionic-native/keyboard';
 
 @Component({
   templateUrl: 'app.html',
-  providers: [NativeStorage]
+  providers: [NativeStorage],   
 })
 
 export class MyApp {
@@ -35,6 +36,9 @@ export class MyApp {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      if (this.platform.is('android')) {
+                
+            }
     });
   }
 

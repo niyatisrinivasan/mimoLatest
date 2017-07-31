@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PopoverPage } from '../pages/popover/popover';
@@ -41,7 +41,7 @@ import { CountryServiceProvider } from '../providers/country-service/country-ser
 import { WorkExpServiceProvider } from '../providers/workexp-service/workexp-service';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { FormatDatePipe } from '../pipes/format-date/format-date';
-
+import {Keyboard} from '@ionic-native/keyboard';
 const cloudSettings: CloudSettings = {
   'core': {
     'app_id': '2ea62370',
@@ -81,14 +81,27 @@ const cloudSettings: CloudSettings = {
     RegisterPage,
     FormatDisplayDatePipe,
     ExtractCountryNamePipe,
-    FormatDatePipe
+    FormatDatePipe,
+    
   ],
   imports: [
     BrowserModule,
     AutoCompleteModule,
-    IonicModule.forRoot(MyApp),
+    // IonicModule.forRoot(MyApp),
     HttpModule,
     CloudModule.forRoot(cloudSettings),
+    IonicStorageModule.forRoot(),
+      IonicModule.forRoot(MyApp
+        , {
+        platforms : {
+          android : {
+            // These options are available in ionic-angular@2.0.0-beta.2 and up.
+            scrollAssist: false,    // Valid options appear to be [true, false]
+            autoFocusAssist: false  // Valid options appear to be ['instant', 'delay', false]
+          }
+          // http://ionicframework.com/docs/v2/api/config/Config/)
+        }
+      })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -106,7 +119,8 @@ const cloudSettings: CloudSettings = {
     MenuPage,
     JobDescriptionPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+
   ],
   providers: [
     StatusBar,
@@ -124,7 +138,8 @@ const cloudSettings: CloudSettings = {
     Facebook,
     NativeStorage,
     CountryServiceProvider,
-    WorkExpServiceProvider
+    WorkExpServiceProvider,
+     Keyboard
   ]
 })
 export class AppModule { }

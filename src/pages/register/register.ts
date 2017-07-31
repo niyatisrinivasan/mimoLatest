@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { IonicPage, NavController, NavParams, AlertController, Loading, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { LoginPage } from '../login/login';
@@ -8,7 +9,7 @@ import { MenuPage } from '../menu/menu';
 import { AppGlobals } from '../../global';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import {CountryServiceProvider} from '../../providers/country-service/country-service';
-
+import {Keyboard} from '@ionic-native/keyboard';
 @IonicPage()
 @Component({
   selector: 'page-register',
@@ -16,15 +17,42 @@ import {CountryServiceProvider} from '../../providers/country-service/country-se
 })
 
 export class RegisterPage {
+  @ViewChild('signupSlider') signupSlider: any;
+  slideOneForm: FormGroup;
+  slideTwoForm: FormGroup;
   createSuccess = false;
   credentials = { email: '', UserName: '', Address: '', Gender: '', CountryID: '', PostalCode: '', password: '', DateOfBirth: '', DeviceToken: '' };
   loading: Loading;
   countryList: any[]
-  constructor(private toastCtrl: ToastController, public CountryServiceProvider: CountryServiceProvider, private push: Push, private auth: AuthServiceProvider, private _appGlobals: AppGlobals, private nav: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController) 
+  constructor(private toastCtrl: ToastController,public formBuilder: FormBuilder, public CountryServiceProvider: CountryServiceProvider, private push: Push, private auth: AuthServiceProvider, private _appGlobals: AppGlobals, private nav: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController,private keyboard: Keyboard) 
   { 
-    this.getAllCountries(); 
-  }
+  this.getAllCountries();
 
+  this.slideOneForm = formBuilder.group({
+        firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],   
+        email:['', Validators.compose([Validators.required,Validators.email, Validators.required])],
+        password:['', Validators.compose([Validators.minLength(8), Validators.required ])],
+        confirmpassword:['', Validators.required],
+    }, {validator: this.matchingPasswords('password', 'confirmpassword')}
+    );
+  
+
+    this.slideTwoForm = formBuilder.group({
+      Address: ['', Validators.compose([Validators.pattern('[a-zA-z]*'),Validators.required])],
+    })
+  }
+matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+    return (group: FormGroup): {[key: string]: any} => {
+      let password = group.controls[passwordKey];
+      let confirmpassword = group.controls[confirmPasswordKey];
+
+      if (password.value!== confirmpassword.value) {
+        return {
+          mismatchedPasswords: true
+        };
+      }
+    }
+}
   public register() {
     let self = this
     self.showLoading()
@@ -51,7 +79,7 @@ export class RegisterPage {
   presentToast(responseMsg) {
     let toast = this.toastCtrl.create({
       message: responseMsg,
-      duration: 3000,
+      duration: 2000,
       position: 'top'
     });
 

@@ -1,74 +1,102 @@
 <ion-header>
   <ion-navbar color="light">
-    <ion-icon></ion-icon>
     <ion-title>Register</ion-title>
   </ion-navbar>
 </ion-header>
-
+<!-- 
+      <ion-row class="logo-row">
+        <img id="profilepic" src="assets/mimotreepic.jpg" width="60" height="auto" margin-bottom="20">
+      </ion-row> -->
 <ion-content class="login-content" padding>
-  <ion-row class="logo-row">
+  <form (ngSubmit)="register()" #registerForm="ngForm">
+    <ion-slides #signupSlider pager="true" parallax="true" padding>
 
-    <img id="profilepic" src="assets/mimotreepic.jpg" width="60" height="auto" margin-bottom="20">
+      <ion-slide>
+        <!-- Full name, email, password, confirm password -->
+        <ion-row class="logo-row">
+          <img id="profilepic" src="assets/mimotreepic.jpg" width="60" height="auto" margin-bottom="20">
+        </ion-row>
 
-  </ion-row>
-  <div class="login-box">
+        <div class="login-box">
+          <form [formGroup]="slideOneForm">
 
-    <form (ngSubmit)="register()" #registerForm="ngForm">
-      <ion-row>
-        <ion-col>
-          <ion-list inset>
-
+            <!-- Validation -->
+            <div class="error" *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty)">Please enter a valid name.</div>
+            <div class="error" *ngIf="!slideOneForm.controls.password.valid  && (slideOneForm.controls.password.dirty)">Your password must be at least 8 characters.</div>
+            <div class="error" *ngIf="!slideOneForm.controls.email.valid  && (slideOneForm.controls.email.dirty)">Please enter a valid email address.</div>
+            <div class="error" *ngIf="!slideOneForm.controls.confirmpassword.valid  && slideOneForm.hasError('mismatchedPasswords')  && (slideOneForm.controls.confirmpassword.dirty)">
+              Your passwords do not match </div>
             <ion-item>
-              <ion-input type="text" placeholder="Full Name" name="UserName" [(ngModel)]="credentials.UserName" required></ion-input>
+              <ion-label stacked>Full Name</ion-label>
+              <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty)"
+                name="UserName" [(ngModel)]="credentials.UserName" required></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="email" placeholder="Email" name="email" [(ngModel)]="credentials.email" required></ion-input>
-            </ion-item>
-
-
-            <ion-item>
-              <ion-label>Gender</ion-label>
-              <ion-select name="Gender" [(ngModel)]="credentials.Gender" required>
-                <ion-option value="Female">Female</ion-option>
-                <ion-option value="Male">Male</ion-option>
-              </ion-select>
+              <ion-label stacked>Email</ion-label>
+              <ion-input formControlName="email" type="email" [class.invalid]="!slideOneForm.controls.email.valid && (slideOneForm.controls.email.dirty)"
+                name="email" [(ngModel)]="credentials.email" required></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" placeholder="Address" name="Address" [(ngModel)]="credentials.Address" required></ion-input>
+              <ion-label stacked>Password</ion-label>
+              <ion-input formControlName="password" type="password" [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty)"
+                name="password" [(ngModel)]="credentials.password" required></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" placeholder="PostalCode" name="PostalCode" [(ngModel)]="credentials.PostalCode" required></ion-input>
+              <ion-label stacked>Confirm Password</ion-label>
+              <ion-input formControlName="confirmpassword" type="password" [class.invalid]="!slideOneForm.controls.confirmpassword.valid && slideOneForm.hasError('mismatchedPasswords') && (slideOneForm.controls.confirmpassword.dirty)"
+                name="confirmpassword" required show-password></ion-input>
             </ion-item>
+          </form>
+        </div>
+      </ion-slide>
+     <ion-slide>
+        <div class="login-box">
 
+          <form [formGroup]="slideTwoForm">
+             <div class="error" *ngIf="!slideTwoForm.controls.Address.valid  && (slideTwoForm.controls.Address.dirty)">Please enter a valid address.</div>
             <ion-item>
-              <ion-label>Countries</ion-label>
-              <ion-select name="CountryID" [(ngModel)]="credentials.CountryID" multiple>
-                <ion-option *ngFor="let country of countryList"  [value]="name.CountryID" >{{country.CountryName}}</ion-option>
-              </ion-select>
+              <ion-label stacked>Address</ion-label>
+              <ion-input formControlName="Address" type="text" [class.invalid]="!slideTwoForm.controls.Address.valid && (slideTwoForm.controls.Address.dirty)"
+                name="Address" [(ngModel)]="credentials.Address" required></ion-input>
             </ion-item>
+          </form>
+          <ion-item>
+            <ion-label stacked>Postal Code</ion-label>
+            <ion-input type="number" maxlength="6" name="PostalCode" [(ngModel)]="credentials.PostalCode" required></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label>Date of Birth</ion-label>
-              <ion-datetime displayFormat="MMM DD, YYYY HH:mm" name="DateOfBirth" [(ngModel)]="credentials.DateOfBirth"></ion-datetime>
-            </ion-item>
+          <ion-item>
+            <ion-label stacked>Gender</ion-label>
+            <ion-select name="Gender" [(ngModel)]="credentials.Gender" required>
+              <ion-option value="Female">Female</ion-option>
+              <ion-option value="Male">Male</ion-option>
+            </ion-select>
+          </ion-item>
 
-            <ion-item>
-              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="credentials.password" required></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label stacked>Country</ion-label>
+            <ion-select name="CountryID" [(ngModel)]="credentials.CountryID">
+              <ion-option *ngFor="let country of countryList" [value]="name.CountryID">{{country.CountryName}}</ion-option>
+            </ion-select>
+          </ion-item>
 
-          </ion-list>
-        </ion-col>
-      </ion-row>
+          <ion-item>
+            <ion-label stacked>Date Of Birth</ion-label>
+            <ion-datetime displayFormat="MMM DD, YYYY" name="DateOfBirth" [(ngModel)]="credentials.DateOfBirth"></ion-datetime>
+          </ion-item>
 
-      <ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
-        </ion-col>
-      </ion-row>
 
-    </form>
-  </div>
+          <ion-row>
+            <ion-col class="signup-col">
+              <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </form>
 </ion-content>
