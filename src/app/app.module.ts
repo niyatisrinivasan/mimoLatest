@@ -20,7 +20,6 @@ import { MenuPage } from '../pages/menu/menu';
 import { JobDescriptionPage } from '../pages/job-description/job-description';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-
 import { Facebook } from '@ionic-native/facebook';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { AppGlobals } from '../global';
@@ -42,6 +41,8 @@ import { WorkExpServiceProvider } from '../providers/workexp-service/workexp-ser
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { FormatDatePipe } from '../pipes/format-date/format-date';
 import {Keyboard} from '@ionic-native/keyboard';
+import { IntroPage } from '../pages/intro/intro';
+import {VerificationPage} from '../pages/verification/verification';
 const cloudSettings: CloudSettings = {
   'core': {
     'app_id': '2ea62370',
@@ -82,6 +83,8 @@ const cloudSettings: CloudSettings = {
     FormatDisplayDatePipe,
     ExtractCountryNamePipe,
     FormatDatePipe,
+    IntroPage, 
+    VerificationPage
     
   ],
   imports: [
@@ -120,6 +123,8 @@ const cloudSettings: CloudSettings = {
     JobDescriptionPage,
     LoginPage,
     RegisterPage,
+    IntroPage,
+    VerificationPage
 
   ],
   providers: [
@@ -139,7 +144,8 @@ const cloudSettings: CloudSettings = {
     NativeStorage,
     CountryServiceProvider,
     WorkExpServiceProvider,
-     Keyboard
+    Keyboard,
+    Storage, 
   ]
 })
 export class AppModule { }

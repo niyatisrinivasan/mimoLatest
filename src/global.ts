@@ -8,8 +8,8 @@ export class AppGlobals {
     public deviceToken: string;
     public isSubsequent: boolean = true;
     // public baseUrl = 'https://mimobotnode.au-syd.mybluemix.net/';
-    public baseUrl = 'http://localhost:8680/';
-    // public baseUrl = 'http://101.100.181.52:8680/';
+    //public baseUrl = 'http://localhost:8680/';
+    public baseUrl = 'http://101.100.181.52:8680/';
 
     setIdToken(token) {
         this.accessToken = token;

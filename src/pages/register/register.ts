@@ -38,7 +38,7 @@ export class RegisterPage {
   
 
     this.slideTwoForm = formBuilder.group({
-      Address: ['', Validators.compose([Validators.pattern('[a-zA-z]*'),Validators.required])],
+      Address: ['', Validators.compose([Validators.pattern('[a-zA-z 0-9]*'),Validators.required])],
     })
   }
 matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
@@ -46,7 +46,7 @@ matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
       let password = group.controls[passwordKey];
       let confirmpassword = group.controls[confirmPasswordKey];
 
-      if (password.value!== confirmpassword.value) {
+      if (password.value != confirmpassword.value) {
         return {
           mismatchedPasswords: true
         };
@@ -120,6 +120,15 @@ matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
       dismissOnPageChange: true
     });
     this.loading.present();
+  }
+
+  //Show and Hide Password Feature// 
+  showPassword(input: any): any {
+   input.type = input.type === 'password' ?  'text' : 'password';
+  }
+
+    showPasswordd(input1: any): any {
+   input1.type = input1.type === 'password' ?  'text' : 'password';
   }
 }
 

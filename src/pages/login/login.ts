@@ -10,7 +10,8 @@ import { RegisterPage } from '../register/register';
 import { AppGlobals } from '../../global';
 import { MenuPage } from '../../pages/menu/menu';
 import { Push, PushToken } from '@ionic/cloud-angular';
-
+import { Storage } from '@ionic/storage';
+import {VerificationPage} from '../../pages/verification/verification';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -24,8 +25,9 @@ export class LoginPage {
   loading: Loading;
   credentials = { email: '', password: '' };
   userProfile: any = null;
+  public showPass = false;
 
-  constructor(private push: Push, private toastCtrl: ToastController, private auth: AuthServiceProvider, private userService: UserServiceProvider, private navParams: NavParams, private nav: NavController, private navCtrl: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController, public fb: Facebook, public nativeStorage: NativeStorage, public _appGlobals: AppGlobals, public viewCtrl: ViewController) {
+  constructor(private push: Push, private toastCtrl: ToastController, private auth: AuthServiceProvider, private userService: UserServiceProvider, public storage: Storage, private navParams: NavParams, private nav: NavController, private navCtrl: NavController, private alertCtrl: AlertController, private loadingCtrl: LoadingController, public fb: Facebook, public nativeStorage: NativeStorage, public _appGlobals: AppGlobals, public viewCtrl: ViewController) {
     this.fb.browserInit(this.FB_APP_ID, "v2.8");
     // console.log(this._appGlobals.setDeviceToken)
   }
@@ -58,6 +60,7 @@ export class LoginPage {
     }).catch(err => self.presentToast(err))
   }
 
+  
   // FB Login methods
   doFbLogin() {
     let permissions = new Array<string>();
@@ -121,11 +124,9 @@ export class LoginPage {
       duration: 3000,
       position: 'top'
     });
-
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-
     toast.present();
   }
 
@@ -157,8 +158,16 @@ export class LoginPage {
       title: 'Email',
       subTitle: text,
       buttons: ['Submit']
-
     })
+  }
+
+  verifyEmail(){
+    this.navCtrl.push(VerificationPage);
+  }
+
+//Show and Hide Password Feature// 
+  showPassword(input: any): any {
+   input.type = input.type === 'password' ?  'text' : 'password';
   }
 }
 

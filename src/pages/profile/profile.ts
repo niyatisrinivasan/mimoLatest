@@ -8,7 +8,8 @@ import { user } from '../../dataSeeding/userInfo';
 import { ExtractCountryNamePipe } from '../../pipes/extract-country-name/extract-country-name';
 import { CountryServiceProvider } from '../../providers/country-service/country-service';
 import { ChatPage } from '../../pages/chat/chat';
-
+import { IntroPage } from '../../pages/intro/intro';
+import { Storage } from '@ionic/storage';
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -26,12 +27,18 @@ export class ProfilePage {
   userId: any
   updateData: any;
   constructor(public toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, public nativeStorage: NativeStorage,
-    public modalCtrl: ModalController, public popoverCtrl: PopoverController, public alertCtrl: AlertController,
+    public modalCtrl: ModalController, public popoverCtrl: PopoverController, public alertCtrl: AlertController, public storage: Storage,
     public userService: UserServiceProvider, public extractCountryName: ExtractCountryNamePipe, public countryService: CountryServiceProvider) {
     this.getUser()
   }
 
   ionViewDidLoad() {
+    this.storage.get('intro-done').then(done => {
+    if (!done) {
+      this.storage.set('intro-done', true);
+      this.navCtrl.setRoot(IntroPage);
+    }
+  });
     console.log('ionViewDidLoad ProfilePage');
   }
 
@@ -150,6 +157,7 @@ export class ProfilePage {
       console.log(popoverData)
     })
   }
+  
 }
 
 /////////////////////////////////////////////////////////

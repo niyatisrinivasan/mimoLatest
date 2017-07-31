@@ -16,7 +16,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { ChatPage } from '../pages/chat/chat';
 import {Keyboard} from '@ionic-native/keyboard';
-
+import { IntroPage } from '../pages/intro/intro';
+import {VerificationPage} from '../pages/verification/verification';
 @Component({
   templateUrl: 'app.html',
   providers: [NativeStorage],   
@@ -29,16 +30,16 @@ export class MyApp {
   constructor(public push: Push, public platform: Platform, public nativeStorage: NativeStorage, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp()
     this.receiveNotification()
-    this.rootPage = LoginPage
+    this.rootPage = ProfilePage
   }
-
+  
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       if (this.platform.is('android')) {
                 
-            }
+      }
     });
   }
 

@@ -40,23 +40,25 @@
 
             <ion-item>
               <ion-label stacked>Password</ion-label>
-              <ion-input formControlName="password" type="password" [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty)"
+              <ion-input #input formControlName="password" type="password" [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty)"
                 name="password" [(ngModel)]="credentials.password" required></ion-input>
+                <button ion-button clear color="dark" type="button" item-right (click)="showPassword(input)"> <ion-icon name="eye"> </ion-icon> </button>
             </ion-item>
 
             <ion-item>
               <ion-label stacked>Confirm Password</ion-label>
-              <ion-input formControlName="confirmpassword" type="password" [class.invalid]="!slideOneForm.controls.confirmpassword.valid && slideOneForm.hasError('mismatchedPasswords') && (slideOneForm.controls.confirmpassword.dirty)"
+              <ion-input  #input1  formControlName="confirmpassword" type="password" [class.invalid]="!slideOneForm.controls.confirmpassword.valid && slideOneForm.hasError('mismatchedPasswords') && (slideOneForm.controls.confirmpassword.dirty)"
                 name="confirmpassword" required show-password></ion-input>
+                <button ion-button clear color="dark" type="button" item-right (click)="showPasswordd(input1)"> <ion-icon name="eye"> </ion-icon> </button>
             </ion-item>
           </form>
         </div>
       </ion-slide>
-     <ion-slide>
+      <ion-slide>
         <div class="login-box">
 
           <form [formGroup]="slideTwoForm">
-             <div class="error" *ngIf="!slideTwoForm.controls.Address.valid  && (slideTwoForm.controls.Address.dirty)">Please enter a valid address.</div>
+            <div class="error" *ngIf="!slideTwoForm.controls.Address.valid  && (slideTwoForm.controls.Address.dirty)">Please enter a valid address.</div>
             <ion-item>
               <ion-label stacked>Address</ion-label>
               <ion-input formControlName="Address" type="text" [class.invalid]="!slideTwoForm.controls.Address.valid && (slideTwoForm.controls.Address.dirty)"
@@ -79,7 +81,7 @@
           <ion-item>
             <ion-label stacked>Country</ion-label>
             <ion-select name="CountryID" [(ngModel)]="credentials.CountryID">
-              <ion-option *ngFor="let country of countryList" [value]="name.CountryID">{{country.CountryName}}</ion-option>
+              <ion-option *ngFor="let country of countryList" [value]="country.CountryID">{{country.CountryName}}</ion-option>
             </ion-select>
           </ion-item>
 
@@ -87,7 +89,6 @@
             <ion-label stacked>Date Of Birth</ion-label>
             <ion-datetime displayFormat="MMM DD, YYYY" name="DateOfBirth" [(ngModel)]="credentials.DateOfBirth"></ion-datetime>
           </ion-item>
-
 
           <ion-row>
             <ion-col class="signup-col">

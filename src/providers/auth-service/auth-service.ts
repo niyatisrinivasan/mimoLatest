@@ -41,4 +41,10 @@ export class AuthServiceProvider {
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this._appGlobals.baseUrl + "renewtoken", credentials, options).toPromise();
   }
+
+  resendEmail() {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'x-access-token': this._appGlobals.accessToken });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this._appGlobals.baseUrl + "resendEmail", options).toPromise();
+  }
 }

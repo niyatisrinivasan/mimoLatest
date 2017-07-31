@@ -11,16 +11,17 @@
 </ion-header>
 
 <ion-content class="profile-content" padding>
+   <img src id="profilepic" src="assets/mimotreepic.jpg">
   <ion-card class="profile-box">
     <ion-row class="editicon">
-      <button ion-button icon-right clear small ion-button color="dark" (click)=showPrompt(userData) class="buttton-right"> 
+      <button ion-button icon-right clear small ion-button color="dark" (click)=updateUser(userData) class="buttton-right"> 
      <ion-icon id="edit"name="create"></ion-icon>
       </button>
     </ion-row>
 
 
     <p id="name">{{userData.UserName}}
-      <img src id="profilepic" src="assets/mimotreepic.jpg">
+      
     </p>
     <p id="email">{{userData.Email}} </p>
 
@@ -28,10 +29,10 @@
     <ion-row>
       <ion-item class="home">
         <ion-col>
-          <ion-icon name="home"></ion-icon>
+          <ion-icon name="home">&nbsp;Address</ion-icon>
         </ion-col>
         <ion-col col-3>
-          <p id="address">{{userData.Address}} </p>
+          <p id="address">{{userData.Address}}&nbsp;{{userData.PostalCode}}</p>
         </ion-col>
       </ion-item>
     </ion-row>
@@ -40,7 +41,7 @@
     <ion-row>
       <ion-item class="gender">
         <ion-col>
-          <ion-icon name="person"></ion-icon>
+          <ion-icon name="person">&nbsp;Gender</ion-icon>
         </ion-col>
         <ion-col>
           <p id="gender">{{userData.Gender}}</p>
@@ -48,17 +49,29 @@
       </ion-item>
     </ion-row>
 
-    <!-- COUNTRY -->
-    <!-- <ion-row>
+    <!--COUNTRY -->
+    <ion-row>
       <ion-item class="country">
         <ion-col>
-          <ion-icon name="flag"></ion-icon>
+          <ion-icon name="flag">&nbsp;Country</ion-icon>
         </ion-col>
         <ion-col>
-          <p id="country">{{userData.Countries | extractCountryName}} </p>
+          <p id="country">{{userData.CountryName}} </p>
         </ion-col>
       </ion-item>
-    </ion-row> -->
+    </ion-row>
+
+    <!--Date Of Birth  -->
+    <ion-row>
+      <ion-item class="dob">
+        <ion-col>
+          <ion-icon name="calendar">&nbsp;Date Of Birth</ion-icon>
+        </ion-col>
+        <ion-col>
+          <p id="dob">{{userData.DateOfBirth}} </p>
+        </ion-col>
+      </ion-item>
+    </ion-row>
   </ion-card>
 
   <ion-fab right bottom>
